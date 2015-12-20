@@ -19,6 +19,7 @@ class Controller_Post extends Controller
 
 				DB::start_transaction();
 				$post->save_with_sort_order($posted['body']);
+				$posts = Model_Post::get_all();
 				DB::commit_transaction();
 			}
 			catch(FuelException $e)
@@ -28,7 +29,7 @@ class Controller_Post extends Controller
 			}
 		}
 
-		$posts = Model_Post::get_all();
+		if (!isset($posts)) $posts = Model_Post::get_all();
 
 		return Response::forge(View::forge('post/index', array(
 			'posted' => $posted,
