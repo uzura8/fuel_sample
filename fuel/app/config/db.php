@@ -16,13 +16,24 @@ return array(
 		'charset' => 'utf8',
 		'table_prefix' => '',
 		'enable_cache'   => false,
-		'readonly' => array('slave1'),
+		'readonly' => array('slave1', 'slave2'),
 	),
 	// SlaveDB 設定
 	'slave1' => array(
 		'type'        => 'pdo',
 		'connection'  => array(
 			'dsn'        => 'mysql:host=localhost;port=3307;unix_socket=/tmp/mysql.sock2;dbname=tmp_fuel_local',
+			'username'   => 'root',
+			'password'   => '',
+		),
+		'charset' => 'utf8',
+		'table_prefix' => '',
+		'enable_cache'   => false,
+	),
+	'slave2' => array(
+		'type'        => 'pdo',
+		'connection'  => array(
+			'dsn'        => 'mysql:host=localhost;port=3308;unix_socket=/tmp/mysql.sock3;dbname=tmp_fuel_local',
 			'username'   => 'root',
 			'password'   => '',
 		),
